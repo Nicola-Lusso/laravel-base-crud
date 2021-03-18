@@ -23,7 +23,11 @@
                 <td><a href="{{ route ('movies.show', ['movie' => $film->id])}}">Descrizione</a></td>
               </tr>
             @endforeach
-          
+            <td>
+              <div class="adds">
+                  <a href="{{route('movies.create')}}">Aggiungi Film</a>
+              </div>
+            </td>
         </tbody>
       </table>
 @endsection
