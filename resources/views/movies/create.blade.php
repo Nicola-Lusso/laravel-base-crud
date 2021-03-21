@@ -8,7 +8,20 @@
 
     <div class="container ">
         <h3>Aggiungi Film</h3>
-        <form action="{{route('movies.store')}}">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{route('movies.store')}}" method="post">
+        @method('POST')
+        @csrf
+
         <div class="form-group">
             <label for="name">Titolo</label>
             <input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder="Inserire Titolo del Film">

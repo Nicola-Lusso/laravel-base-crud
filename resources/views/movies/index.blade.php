@@ -21,6 +21,7 @@
                 <td>{{ $film->language }}</td>
                 <td>{{ $film->rating }}</td>
                 <td><a href="{{ route ('movies.show', ['movie' => $film->id])}}">Descrizione</a></td>
+                <td><a href="{{ route('movies.edit', ['movie' => $film->id])}}" class="btn btn-warning">modifica</a></td>
               </tr>
             @endforeach
             <td>

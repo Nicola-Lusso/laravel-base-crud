@@ -30,7 +30,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('add');
+        return view('movies.create');
     }
 
     /**
@@ -57,14 +57,16 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Movie $movie)
     {
-        $film = Movie::find($id);
+        if ($movie) {
 
-        $data = [
-            'film' => $film
-        ];
-        return view('movies.show', $data);
+            $data = [
+              'film' => $movie
+            ];
+            return view('movies.show', $data);
+          }
+          abort('404');
     }
 
     /**
@@ -73,9 +75,18 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movie $movie)
     {
-        //
+        if ($movie) {
+
+            $data = [
+              'film' => $movie
+            ];
+            return view('movies.edit', $data);
+          }
+    
+          abort('404');
+    
     }
 
     /**
